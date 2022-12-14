@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+
+import ItemDetailContainer from "./components/itemDetailContainer/ItemDetailContainer";
+import ItemListContainer from "./components/itemListContainer/ItemListContainer";
+import Navbar from "./components/navBar/NavBar"
+
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Cart from "./components/cart/Cart";
+
+import CartContextProvider from "./context/CartContext";
+import Form from "./components/form/Form";
+
 
 function App() {
+
+  // CREAR EL ENRUTADO
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   
+    <BrowserRouter>
+      <CartContextProvider>
+
+        <Navbar />
+
+        <Routes>
+
+          <Route path="/" element={<ItemListContainer />} />
+          
+          <Route path="/category/:categoryName" element={<ItemListContainer />} />
+
+          <Route path="/itemDetail/:id" element={ <ItemDetailContainer /> } />
+
+          <Route path="/checkout" element={ <Form /> } />
+
+          <Route path="/cart" element={ <Cart /> } />
+
+          <Route path="*" element={ <h2>Lo siento esta url no existe</h2> } />
+
+        </Routes>
+
+      </CartContextProvider>
+    </BrowserRouter>
+
   );
+  
 }
 
 export default App;

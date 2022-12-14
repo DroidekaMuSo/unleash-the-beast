@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap'); 
+
+
+.navbar-container{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 10px 0px 10px 1px #7F669D;
+}
+
+
+.container-logo{
+    width: 20%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.navbar{
+    width: 60%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.logo-navbar{
+    color: #ff33cc;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+.navbar-item{
+    list-style: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 7px 10px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container-cart{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.counter-cart{
+    position: absolute;
+    top: 4%;
+    right: 35%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    color: black;
+}
+a:hover{
+    color: #ff33cc;
+}
