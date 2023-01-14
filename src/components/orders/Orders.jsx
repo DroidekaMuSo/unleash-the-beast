@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Orders = () => {
+const Orders = ( {order} ) => {
   return (
-    <div>Orders</div>
+    <div>
+        <h2>{order?.buyer?.name}</h2>
+    </div>
   )
 }
 

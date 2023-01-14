@@ -1,8 +1,11 @@
+
 import React from 'react'
 
 const NoInfo = () => {
   return (
-    <div>NoInfo</div>
+    <div>
+        <h2>No hay informacion</h2>
+    </div>
   )
 }
 

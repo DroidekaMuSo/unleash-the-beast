@@ -1,8 +1,14 @@
-import React from 'react'
+import React from "react"
+import Item from "../item/Item"
+import "./ItemList.css"
 
-const ItemList = () => {
+const ItemList = ({ items }) => {
   return (
-    <div>ItemList</div>
+    <div className="container-cards">
+      {items.map((element) => {
+        return <Item key={element.id} element={element} />
+      })}
+    </div>
   )
 }
 
