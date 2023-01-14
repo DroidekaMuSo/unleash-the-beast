@@ -1,12 +1,19 @@
 //Importaciones
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import {
+  Cart,
+  FormikFormulario,
+  ItemDetailContainer,
+  ItemListContainer,
+  Navbar,
+} from "./containers";
 //Context
 
 const App = () => {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
         <Route path="/category/:categoryName" element={<ItemListContainer />} />
