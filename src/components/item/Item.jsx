@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import "./Item.css";
+
 
 const Item = ({ element }) => {
   return (
@@ -23,7 +23,6 @@ const Item = ({ element }) => {
           gutterBottom
           variant="h5"
           component="div"
-          color="primary"
           align="center"
         >
           {element.name}
@@ -32,7 +31,7 @@ const Item = ({ element }) => {
           {element.description}
         </Typography>
         <Typography variant="body1" color="secondary" align="center">
-          ${element.price}.-
+          ${element.price}
         </Typography>
       </CardContent>
       <CardActions style={{ display: "flex", justifyContent: "center" }}>
@@ -40,7 +39,7 @@ const Item = ({ element }) => {
           to={`/itemDetail/${element.id}`}
           style={{ textDecoration: "none" }}
         >
-          <Button size="large" variant="contained">
+          <Button size="large" variant="contained" color="secondary">
             Ver detalle
           </Button>
         </Link>

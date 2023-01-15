@@ -7,6 +7,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
+import { Button, FormControl, TextField } from "@mui/material";
 
 const Form = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
   const [userData, setUserData] = useState({ name: "", phone: "", email: "" });
@@ -31,35 +32,54 @@ const Form = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
 
   return (
     <div>
-      <form action="" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Ingrese su nombre"
+      <form
+        onSubmit={handleSubmit}
+        style={{width:'30rem'}}
+      >
+        <TextField
+          label="Ingrese su nombre"
+          variant="standard"
           name="name"
+          type="text"
           value={userData.name}
           onChange={(event) =>
             setUserData({ ...userData, name: event.target.value })
           }
+          color="secondary"
+          fullWidth
+          style={{ marginBottom: "1rem" }}
         />
-        <input
-          type="text"
-          placeholder="Ingrese su telefono"
-          name="phone"
+
+        <TextField
+          label="Ingrese su telefono"
+          type="tel"
+          variant="standard"
+          name="number"
+          value={userData.phone}
           onChange={(event) =>
             setUserData({ ...userData, phone: event.target.value })
           }
-          value={userData.phone}
+          color="secondary"
+          fullWidth
+          style={{ marginBottom: "1rem" }}
         />
-        <input
+
+        <TextField
+          label="Ingrese su email"
           type="email"
-          placeholder="Ingrese su email"
+          variant="standard"
           name="email"
+          value={userData.email}
           onChange={(event) =>
             setUserData({ ...userData, email: event.target.value })
           }
-          value={userData.email}
+          color="secondary"
+          fullWidth
+          style={{ marginBottom: "1rem" }}
         />
-        <button type="submit">Finalizar compra</button>
+        <Button type="submit" color="secondary" fullWidth variant="contained">
+          Finalizar compra
+        </Button>
       </form>
     </div>
   );

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import "./CartWidget.css";
 
-export const CartWidget = () => {
+const CartWidget = () => {
   const { cart } = useContext(CartContext);
   return (
     <div className="container-cart">
@@ -12,13 +12,15 @@ export const CartWidget = () => {
         <BsFillCartCheckFill
           style={{
             fontSize: "2rem",
-            color: "#7F669D",
+            color: "#137031",
           }}
         />
         <div className="bubble-counter">
-          <span style={{ color: "#7F669D" }}>{cart.length}</span>
+          <span>{cart.length}</span>
         </div>
       </Link>
     </div>
   );
 };
+
+export default CartWidget;

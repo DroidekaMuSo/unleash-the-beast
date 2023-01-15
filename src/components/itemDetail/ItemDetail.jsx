@@ -12,12 +12,10 @@ const ItemDetail = ({ product }) => {
       ...product,
       quantity: quantity,
     });
-
-    Swal({
-      title: "Operacion Exitosa!",
-      text: `Agregaste el producto con exito`,
+    Swal.fire({
       icon: "success",
-      button: "Ok",
+      title: "Articulo agregado",
+      text: "Vamos al carrito",
     });
   };
 
@@ -33,10 +31,6 @@ const ItemDetail = ({ product }) => {
       <div className={styles.containerDetail}>
         <h2 style={{ fontFamily: "monospace" }}>
           <span style={{ fontSize: "23px" }}>Nombre:</span> {product.name}
-        </h2>
-        <h2 style={{ fontFamily: "monospace" }}>
-          <span style={{ fontSize: "23px" }}>Descripcion:</span>{" "}
-          {product.description}
         </h2>
         <h2 style={{ fontFamily: "monospace" }}>
           <span style={{ fontSize: "23px" }}>Precio:</span> ${product.price}

@@ -1,44 +1,42 @@
-import { useContext, useEffect,useState} from "react"
-import { CartContext } from "../../context/CartContext"
-import CartItem from "../carItem/CartItem"
-import { Button } from "@mui/material"
-import NoInfo from "../noInfo/NoInfo"
-import Form from "../form/Form"
-import { Link } from "react-router-dom"
-import { collection, doc, getDoc } from "firebase/firestore"
-import { db } from "../../firebaseConfig"
-import Orders from "../orders/Orders"
-import Swal from "sweetalert2"
-import "./Cart.css"
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../../context/CartContext";
+import CartItem from "../carItem/CartItem";
+import { Button } from "@mui/material";
+import NoInfo from "../noInfo/NoInfo";
+import Form from "../form/Form";
+import { Link } from "react-router-dom";
+import { collection, doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebaseConfig";
+import Orders from "../orders/Orders";
+import Swal from "sweetalert2";
+import "./Cart.css";
 
 const Cart = () => {
-  const { cart, clearCart, getTotalPrice } = useContext(CartContext)
-  const [buy, setBuy] = useState(false)
-  const [orderId, setOrderId] = useState(null)
-  const [order, setOrder] = useState({})
-
+  const { cart, clearCart, getTotalPrice } = useContext(CartContext);
+  const [buy, setBuy] = useState(false);
+  const [orderId, setOrderId] = useState(null);
+  const [order, setOrder] = useState({});
 
   const openForm = () => {
     if (cart.length > 0) {
-      setBuy(true)
+      setBuy(true);
     } else {
-      alert("No se puede comprar la nada")
+      alert("No se puede comprar la nada");
     }
-  }
+  };
 
   useEffect(() => {
     if (orderId) {
-      const orderCollection = collection(db, "orders")
-      const ref = doc(orderCollection, orderId)
+      const orderCollection = collection(db, "orders");
+      const ref = doc(orderCollection, orderId);
       getDoc(ref).then((res) => {
         setOrder({
           id: res.id,
           ...res.data(),
-        })
-      })
+        });
+      });
     }
-  }, [orderId])
-
+  }, [orderId]);
 
   const limpiar = () => {
     Swal({
@@ -51,22 +49,32 @@ const Cart = () => {
       if (willDelete) {
         Swal("Articulos eliminados", {
           icon: "success",
-        })
-        clearCart()
+        });
+        clearCart();
       } else {
-        Swal("Cancelaste la operacion")
+        Swal("Cancelaste la operacion");
       }
-    })
-  }
+    });
+  };
 
   if (orderId) {
     return (
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+          justifyContent: "center",
+          alignContent: "center",
+          textAlign: "center",
+          marginTop: "30px",
+        }}
+      >
         <h1>Tu orden de compra es: {orderId}</h1>
         <Orders order={order} />
         <Link to={"/"}>Volver a comprar</Link>
       </div>
-    )
+    );
   }
 
   return (
@@ -97,10 +105,14 @@ const Cart = () => {
         ) : (
           cart.length > 0 && (
             <div className="btn-cart">
-              <Button variant="contained" onClick={openForm}>
+              <Button variant="contained" color="secondary" onClick={openForm}>
                 Comprar
               </Button>
-              <Button onClick={() => limpiar()} variant="contained">
+              <Button
+                onClick={() => limpiar()}
+                color="secondary"
+                variant="contained"
+              >
                 Vaciar carrito
               </Button>
             </div>
@@ -108,7 +120,7 @@ const Cart = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

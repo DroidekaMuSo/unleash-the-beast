@@ -13,7 +13,7 @@ const CartItem = ({ item }) => {
         <h2>${item.price}.00</h2>
         <h2>Unidades: {item.quantity}</h2>
       </div>
-      <Button variant="contained" onClick={()=>deleteProductById(item.id)}>Quitar</Button>
+      <Button variant="contained" color="secondary" sx={{marginLeft:'1.5rem'}} onClick={()=>deleteProductById(item.id)}>Quitar</Button>
     </div>
   )
 }
